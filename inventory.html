@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="https://fav.farm/🎒">
+  <title>Tamagotchi Inventory</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Pet Items</h1>
+    <nav>
+      <a href="index.html" class="nav-btn">Status</a>
+      <a href="inventory.html" class="nav-btn">Inventory</a>
+    </nav>
+  </header>
+
+  <main>
+    <ul class="items">
+      <li onclick="feedPet('html', 20, 'energy')">📄 HTML (+20 Energy)</li>
+      <li onclick="feedPet('css', 15, 'mood')">🎨 CSS (+15 Mood)</li>
+      <li onclick="feedPet('icecream', 30, 'mood')">🍦 Ice Cream (+30 Mood)</li>
+    </ul>
+
+    <div class="links">
+      <a href="mailto:youssef@example.com">Suggest Item</a>
+      <a href="https://github.com" target="_blank">GitHub Repo</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>Made by Mohammed for Hack Club Swirl</p>
+  </footer>
+
+  <script>
+    function feedPet(item, amount, stat) {
+      localStorage.setItem('lastItem', item);
+      localStorage.setItem('lastAmount', amount);
+      localStorage.setItem('lastStat', stat);
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>

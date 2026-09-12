@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="https://fav.farm/💻">
+  <title>Dev CODEPET</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Dev CODEPET</h1>
+    <nav>
+      <a href="index.html" class="nav-btn">Status</a>
+      <a href="inventory.html" class="nav-btn">Inventory</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="pet" id="pet">
+      <div class="laptop">
+        <div class="laptop-screen">
+          <div class="screen-house">🏠</div>
+          <div class="screen-code">&lt;/&gt;</div>
+        </div>
+        <div class="laptop-base"></div>
+      </div>
+      <div class="sleep-zzz" id="sleep-zzz">💤</div>
+    </div>
+
+    <p class="p-energy" id="stat-energy">Energy: 80%</p>
+    <p class="p-mood" id="stat-mood">Mood: Coding</p>
+
+    <button class="nav-btn" onclick="sayHi()">Interact</button>
+    <p id="pet-msg" class="pet-msg"></p>
+  </main>
+
+  <footer>
+    <p>Made by Mohammed for Hack Club Swirl</p>
+  </footer>
+
+  <script>
+    var messages = ['Pet says hi!', 'Hello reviewers', 'Code some SWIRL', '01001000 01101001', 'Still compiling...'];
+    function sayHi() {
+      var box = document.getElementById('pet-msg');
+      var pick = messages[Math.floor(Math.random() * messages.length)];
+      box.textContent = pick;
+      box.classList.remove('show');
+      void box.offsetWidth;
+      box.classList.add('show');
+    }
+
+    var itemNames = { html: 'HTML', css: 'CSS', icecream: 'Ice Cream' };
+
+    window.onload = function () {
+      var item = localStorage.getItem('lastItem');
+      if (!item) return;
+
+      var amount = parseInt(localStorage.getItem('lastAmount'), 10);
+      var stat = localStorage.getItem('lastStat');
+
+      localStorage.removeItem('lastItem');
+      localStorage.removeItem('lastAmount');
+      localStorage.removeItem('lastStat');
+
+      var pet = document.getElementById('pet');
+      pet.classList.add('eating');
+      pet.addEventListener('animationend', function () {
+        pet.classList.remove('eating');
+      }, { once: true });
+
+      if (stat === 'energy') {
+        var energyEl = document.getElementById('stat-energy');
+        var current = parseInt(energyEl.textContent.match(/\d+/)[0], 10);
+        var updated = current + amount;
+
+        if (updated >= 100) {
+          window.location.href = 'overfed.html';
+          return;
+        }
+
+        energyEl.textContent = 'Energy: ' + updated + '%';
+      } else if (stat === 'mood') {
+        document.getElementById('stat-mood').textContent = 'Mood: Happy';
+      }
+
+      var box = document.getElementById('pet-msg');
+      box.textContent = 'Coded ' + itemNames[item] + '!';
+      box.classList.remove('show');
+      void box.offsetWidth;
+      box.classList.add('show');
+    };
+  </script>
+</body>
+</html>
