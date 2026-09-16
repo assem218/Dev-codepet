@@ -2,93 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" href="https://fav.farm/💻">
-  <title>Dev CODEPET</title>
+  <title>Stop Air Pollution</title>
+  <link rel="icon" href="https://fav.farm/🌫️">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Dev CODEPET</h1>
+  <aside>
+    <h2>Stop Air Pollution</h2>
     <nav>
-      <a href="index.html" class="nav-btn">Status</a>
-      <a href="inventory.html" class="nav-btn">Inventory</a>
+      <a href="index.html">Home</a>
+      <a href="effects.html">Effects</a>
+      <a href="help.html">How to Help</a>
+      <a href="daily-actions.html">Daily Actions</a>
     </nav>
-  </header>
+  </aside>
 
   <main>
-    <div class="pet" id="pet">
-      <div class="laptop">
-        <div class="laptop-screen">
-          <div class="screen-house">🏠</div>
-          <div class="screen-code">&lt;/&gt;</div>
-        </div>
-        <div class="laptop-base"></div>
-      </div>
-      <div class="sleep-zzz" id="sleep-zzz">💤</div>
-    </div>
+    <h1>What is Air Pollution?</h1>
+    <p class="p-status">Air pollution happens when dangerous gases and dust mix into the air we breathe.</p>
+    
+    <img src="airpollution.jpeg" alt="air pollution image">
 
-    <p class="p-energy" id="stat-energy">Energy: 80%</p>
-    <p class="p-mood" id="stat-mood">Mood: Coding</p>
+    <p class="p-display">It is super bad for our health, trees, and animals. Dirty air hurts everyone!</p>
 
-    <button class="nav-btn" onclick="sayHi()">Interact</button>
-    <p id="pet-msg" class="pet-msg"></p>
+    <h2>Main Sources of Pollution</h2>
+    <p class="p-vibe">Air gets dirty mainly from three things:</p>
+
+    <ul>
+      <li>Factory smoke</li>
+      <li>Car exhausts</li>
+      <li>Burning trash</li>
+    </ul>
+
+    <p class="reviewer-msg">Hello SWIRL reviewers!</p>
+    <button onclick="alert('Protect our air!')">Click Me!</button>
   </main>
 
   <footer>
-    <p>Made by Mostafa for Hack Club Swirl</p>
+    <p>Made by Mostafa for Swirl</p>
   </footer>
-
-  <script>
-    var messages = ['Pet says hi!', 'Hello reviewers', 'Code some SWIRL', '01001000 01101001', 'Still compiling...'];
-    function sayHi() {
-      var box = document.getElementById('pet-msg');
-      var pick = messages[Math.floor(Math.random() * messages.length)];
-      box.textContent = pick;
-      box.classList.remove('show');
-      void box.offsetWidth;
-      box.classList.add('show');
-    }
-
-    var itemNames = { html: 'HTML', css: 'CSS', icecream: 'Ice Cream' };
-
-    window.onload = function () {
-      var item = localStorage.getItem('lastItem');
-      if (!item) return;
-
-      var amount = parseInt(localStorage.getItem('lastAmount'), 10);
-      var stat = localStorage.getItem('lastStat');
-
-      localStorage.removeItem('lastItem');
-      localStorage.removeItem('lastAmount');
-      localStorage.removeItem('lastStat');
-
-      var pet = document.getElementById('pet');
-      pet.classList.add('eating');
-      pet.addEventListener('animationend', function () {
-        pet.classList.remove('eating');
-      }, { once: true });
-
-      if (stat === 'energy') {
-        var energyEl = document.getElementById('stat-energy');
-        var current = parseInt(energyEl.textContent.match(/\d+/)[0], 10);
-        var updated = current + amount;
-
-        if (updated >= 100) {
-          window.location.href = 'overfed.html';
-          return;
-        }
-
-        energyEl.textContent = 'Energy: ' + updated + '%';
-      } else if (stat === 'mood') {
-        document.getElementById('stat-mood').textContent = 'Mood: Happy';
-      }
-
-      var box = document.getElementById('pet-msg');
-      box.textContent = 'Coded ' + itemNames[item] + '!';
-      box.classList.remove('show');
-      void box.offsetWidth;
-      box.classList.add('show');
-    };
-  </script>
 </body>
 </html>
